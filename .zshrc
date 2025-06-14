@@ -123,18 +123,22 @@ alias vim="nvim"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-      
 # =================================================================
 #  TMUX AUTO-START
 # =================================================================
 #
-# Automatically start tmux on login.
-# - Do not start if already inside a tmux session ($TMUX is set).
-# - Do not start if not in an interactive shell.
-# - Do not start for SSH sessions that are non-interactive (e.g., for scp).
+# Automatically start or attach to a tmux session on login.
+# - Only run if the command 'tmux' exists.
+# - Do not run if already inside a tmux session ($TMUX is set).
+# - Do not run if not in an interactive shell.
 #
-if [[ -z "$TMUX" ]] && [[ -n "$PS1" ]] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ dumb ]] && [[ -n "$SSH_TTY" ]]; then
-  # Try to attach to a session named "main", or create it if it doesn't exist.
-  tmux attach-session -t main || tmux new-session -s main
+echo "--- TMUX DEBUG ---"
+echo "1. Is 'tmux' command found? -> $(command -v tmux &>/dev/null && echo 'Yes' || echo 'No')"
+echo "2. Is \$TMUX variable empty?  -> $([ -z "$TMUX" ] && echo 'Yes' || echo "No, it is '$TMUX'")"
+echo "3. Is shell interactive?    -> $([ -n "$PS1" ] && echo 'Yes' || echo 'No')"
+echo "--------------------"
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+    tmux attach -t TMUX || tmux new -s TMUX
 fi
- 
+
