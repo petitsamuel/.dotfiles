@@ -13,6 +13,7 @@ echo "Creating symbolic links..."
 # Format: "source in dotfiles -> destination in home"
 declare -A links=(
     ["$DOTFILES_DIR/.zshrc"]="$HOME/.zshrc"
+    ["$DOTFILES_DIR/.aliases"]="$HOME/.aliases"
     ["$DOTFILES_DIR/.p10k.zsh"]="$HOME/.p10k.zsh"
     ["$DOTFILES_DIR/tmux/.tmux.conf"]="$HOME/.tmux.conf"
     ["$DOTFILES_DIR/nvim"]="$HOME/.config/nvim"

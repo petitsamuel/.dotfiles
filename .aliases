@@ -1,0 +1,26 @@
+# ~/.aliases
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# General navigation and listing
+alias ..="cd .."
+alias ...="cd ../.."
+alias ll="ls -lha" # List all files in a human-readable, long format
+alias la="ls -A"   # List all files, including hidden ones
+alias gtc="cd $SCRIPT_DIR"
+
+# Git aliases
+alias g="git"
+alias ga="git add"
+alias gc="git commit"
+alias gs="git status"
+alias gp="git push"
+
+# System utilities
+alias update="sudo dnf update && sudo dnf upgrade" # For Debian/Ubuntu
+
+# Networking
+alias myip="curl ifconfig.me"
+
+# Clear the screen
+alias c="clear"

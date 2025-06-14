@@ -120,6 +120,8 @@ alias vim="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source $HOME/.aliases
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -132,12 +134,6 @@ alias vim="nvim"
 # - Do not run if already inside a tmux session ($TMUX is set).
 # - Do not run if not in an interactive shell.
 #
-echo "--- TMUX DEBUG ---"
-echo "1. Is 'tmux' command found? -> $(command -v tmux &>/dev/null && echo 'Yes' || echo 'No')"
-echo "2. Is \$TMUX variable empty?  -> $([ -z "$TMUX" ] && echo 'Yes' || echo "No, it is '$TMUX'")"
-echo "3. Is shell interactive?    -> $([ -n "$PS1" ] && echo 'Yes' || echo 'No')"
-echo "--------------------"
-
 if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
