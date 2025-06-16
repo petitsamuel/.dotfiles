@@ -10,6 +10,7 @@ fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export DOTFILES=~/.config/.dotfiles
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -137,4 +138,6 @@ source $HOME/.aliases
 if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
+
+export PATH="$PATH:/home/sam/go/bin"
 

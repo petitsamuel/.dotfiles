@@ -9,6 +9,8 @@ alias ll="ls -lha" # List all files in a human-readable, long format
 alias la="ls -A"   # List all files, including hidden ones
 alias gtc="cd $SCRIPT_DIR"
 
+alias installDotfile="$DOTFILES/install.sh"
+
 # Git aliases
 alias g="git"
 alias ga="git add"
@@ -20,7 +22,7 @@ alias gp="git push"
 alias update="sudo dnf update && sudo dnf upgrade" # For Debian/Ubuntu
 
 # Networking
-alias myip="curl ifconfig.me"
+alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 
 # Clear the screen
 alias c="clear"
